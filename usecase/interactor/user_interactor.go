@@ -19,7 +19,17 @@ type userInteractor struct {
 	eventFactory event.Factory
 }
 
-//TODO: new
+// NewUserInteractor function helps to create UserInteractor instance
+func NewUserInteractor(r repository.UserRepository, v tool.Validator, h tool.Hasher, l tool.Logger, eChannel chan <- event.Event, eFactory event.Factory) UserInteractor {
+	return &userInteractor{
+		repository: r,
+		validator: v,
+		hasher: h,
+		logger: l,
+		eventChannel: eChannel,
+		eventFactory: eFactory,
+	}
+}
 
 // UserInteractor contains all business logic related to the user instance
 type UserInteractor interface {
